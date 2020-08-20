@@ -1,6 +1,6 @@
-{
-  // .... other webpack, like output, etc.
+module.exports = {
+  entry: './index.js',
   optimization: {
-    minimize: false
-  }
+    minimize: false,
+  },
 }

@@ -1,15 +1,6 @@
-# 👷 `worker-template` Hello World
+This is the Cloudflare Workers script running in front of [Mailing List Hackers](https://www.mailinglisthackers.com).
 
-A template for kick starting a Cloudflare worker project.
+It's nothing crazy, but I usually use it as a testing ground for new experimental workers stuff I'm building, like...
 
-[`index.js`](https://github.com/cloudflare/worker-template/blob/master/index.js) is the content of the Workers script.
-
-#### Wrangler
-
-To generate using [wrangler](https://github.com/cloudflare/wrangler)
-
-```
-wrangler generate projectname https://github.com/cloudflare/worker-template
-```
-
-Further documentation for Wrangler can be found [here](https://developers.cloudflare.com/workers/tooling/wrangler).
+- [lilredirector](https://github.com/signalnerve/lilredirector)
+- [ggf](https://github.com/signalnerve/ggf)
