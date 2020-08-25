@@ -1,7 +1,10 @@
 import redirector from 'lilredirector'
 import ϟ from 'ggf'
 
-addEventListener('fetch', ev => ev.respondWith(handler(ev)))
+addEventListener('fetch', ev => {
+  ev.passThroughOnException()
+  ev.respondWith(handler(ev))
+})
 
 const deferScriptWhitelist = [
   'assets/js/app.min.js',
@@ -11,14 +14,7 @@ const deferScriptWhitelist = [
 
 const embedJson = data => ({
   element: element => {
-    element.append(
-      `<script id="members_data" type="application/json">${JSON.stringify(
-        data,
-      )}</script>`,
-      {
-        html: true,
-      },
-    )
+    element.setInnerContent(JSON.stringify(data))
   },
 })
 
@@ -40,8 +36,13 @@ async function handler(event) {
     if (url.pathname.startsWith('/ghost')) {
       return resp
     } else if (url.pathname.startsWith('/members')) {
-      const data = await (await fetch(ORIGIN + '/members.json')).json()
-      return new HTMLRewriter().on('body', embedJson(data)).transform(resp)
+      const membersResp = await fetch(
+        'https://mailinglisthackers-members.signalnerve.workers.dev',
+      )
+      const data = await membersResp.json()
+      return new HTMLRewriter()
+        .on('script#members_data', embedJson(data))
+        .transform(resp)
     } else {
       return ϟ(resp, {
         deferScripts: {
@@ -52,6 +53,5 @@ async function handler(event) {
     }
   } catch (err) {
     console.log(err.message)
-    return new Response(err.toString())
   }
 }

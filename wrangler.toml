@@ -8,7 +8,7 @@ kv_namespaces = [
   { binding = "EDGE_CACHE", id = "8690b87ee72f484ab86b93577619331e", preview_id = "8690b87ee72f484ab86b93577619331e" }
 ]
 webpack_config = "webpack.config"
-vars = { ENVIRONMENT = "production"}
+vars = { ENVIRONMENT = "production", ORIGIN = "https://www.mailinglisthackers.com" }
 
 [env.development]
 workers_dev = true
