@@ -16,7 +16,7 @@
   "dependencies": {
     "@cloudflare/wrangler": "^1.11.0-rc.1",
     "cookie": "^0.4.1",
-    "ggf": "^0.0.1",
+    "ggf": "^0.0.2",
     "lilredirector": "^0.3.0"
   }
 }
