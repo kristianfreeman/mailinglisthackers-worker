@@ -1,6 +1,11 @@
 import redirector from 'lilredirector'
 import ϟ from 'ggf'
 
+declare global {
+  const ENVIRONMENT: string
+  const ORIGIN: string
+}
+
 addEventListener('fetch', ev => {
   ev.passThroughOnException()
   ev.respondWith(handler(ev))
