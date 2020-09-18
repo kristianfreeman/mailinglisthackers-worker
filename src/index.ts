@@ -1,6 +1,8 @@
 import redirector from 'lilredirector'
 import ϟ from 'ggf'
 
+import newsletter from './newsletter'
+
 declare global {
   const ENVIRONMENT: string
   const ORIGIN: string
@@ -40,6 +42,12 @@ async function handler(event) {
     const resp = await fetch(req)
     if (url.pathname.startsWith('/ghost')) {
       return resp
+    } else if (url.pathname.startsWith('/l/canva')) {
+      return Response.redirect(
+        'https://www.canva.com/join/sifting-shell-sunken',
+      )
+    } else if (url.pathname.startsWith('/newsletter')) {
+      return newsletter(req)
     } else if (url.pathname.startsWith('/members')) {
       const membersResp = await fetch(
         'https://mailinglisthackers-members.signalnerve.workers.dev',
